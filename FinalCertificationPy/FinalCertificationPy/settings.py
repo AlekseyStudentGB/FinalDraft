@@ -135,7 +135,7 @@ LOGGING = {
         },
         'file': {
             'class': 'logging.FileHandler',
-            'filename': '/log/dj_log.log'
+            'filename': './log/dj_log.log'
         },
     },
     'loggers': {
