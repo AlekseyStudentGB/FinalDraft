@@ -69,9 +69,24 @@ def change_recipe(request, pk):
         form = ChRecipe(request.POST, request.FILES)
         if form.is_valid():
             title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            stages = form.cleaned_data['stages']
+            time_preparations = form.cleaned_data['time_preparations']
+            img = form.cleaned_data['img']
+            categories_id = int(form.cleaned_data['categories'])
+            categories = Categories.objects.get(id=categories_id)
             if len(title) > 0:
                 recipe.title = title
-                recipe.save()
+            if len(stages) > 0:
+                recipe.stages = stages
+            if len(description) > 0:
+                recipe.description = description
+            if time_preparations is not None:
+                recipe.time_preparations = time_preparations
+            if img:
+                recipe.img = img
+            recipe.categories = categories
+            recipe.save()
             return render(request, 'cook_book_app/add_success.html')
     form = ChRecipe()
     return render(request, 'cook_book_app/add_recipes.html', {"form": form})

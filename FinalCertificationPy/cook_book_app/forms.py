@@ -42,8 +42,8 @@ class ChRecipe(forms.Form):
     stages = forms.CharField(required=False, min_length=0, label='Этапы приготовления', widget=forms.Textarea(
         attrs={'class': 'name_class', 'placeholder': 'введите этапы приготовления блюда'}))
     time_preparations = forms.IntegerField(required=False, label='Время приготовления')
-
-
+    img = forms.ImageField(required=False)
+    categories = forms.ChoiceField(choices=[(ct.id, ct.title)for ct in Categories.objects.all()])
 class AddCt(forms.Form):
     title = forms.CharField()
 
