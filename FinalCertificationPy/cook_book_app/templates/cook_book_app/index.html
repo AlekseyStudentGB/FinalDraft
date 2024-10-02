@@ -1,5 +1,8 @@
 {% extends 'cook_book_app/basic.html' %}
 
 {% block content %}
-<h2>Рецепты</h2>
+    {% for recipe in random_recipes %}
+    <h2>{{ recipe }}</h2>
+    <p>{{ recipe.description }}</p>
+    {% endfor %}
 {% endblock %}
