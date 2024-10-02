@@ -1,0 +1,9 @@
+<{% extends 'cook_book_app/basic.html' %}
+
+{% block content %}
+<p><a href="{% url 'add_recipes' %}" class="btn btn-primary">Добавить рецепт</a></p>
+    {%for recipe in recipes %}
+    <p><img src="{{ recipe.img.url }}" alt="{{ recipe.img.url }}" height="10%" width="10%">{{ recipe }}
+                    <a href="{% url 'get_recipe' recipe.id %}" class="btn btn-primary">подробней</a></p>
+    {% endfor %}
+{% endblock %}

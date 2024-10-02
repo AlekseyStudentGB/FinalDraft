@@ -1,0 +1,14 @@
+<{% extends 'cook_book_app/basic.html' %}
+
+{% block content %}
+
+<h1>{{ recipe }} <br><img src="{{ recipe.img.url }}" alt="{{ recipe.img.url }}"></h1>
+<p>время приготовления блюда {{ recipe.time_preparations }} мин.</p>
+<p>{{ recipe.description }}<br><pre>{{ recipe.stages }}</pre></p>
+<a href="{% url 'change_recipe' recipe.id %}" class="btn btn-primary">Изменить</a><br>
+
+<form method="post" style="height: 100px; margin: 10px;">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="sadad" >
+</form>
+{% endblock %}
